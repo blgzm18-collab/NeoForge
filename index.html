@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeonForge - Node Editor</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="editor">
+
+    <!-- Top Toolbar -->
+    <header class="top-bar">
+      <div class="left-menu">
+        <button class="menu-btn">File</button>
+        <button class="menu-btn">Edit</button>
+        <button class="menu-btn">Project</button>
+      </div>
+      
+      <div class="center-tools">
+        <button id="play-btn" class="tool-btn play"><i class="fas fa-play"></i></button>
+        <button id="pause-btn" class="tool-btn"><i class="fas fa-pause"></i></button>
+        <button id="stop-btn" class="tool-btn"><i class="fas fa-stop"></i></button>
+        
+        <div class="divider"></div>
+        
+        <button id="grid-toggle" class="tool-btn"><i class="fas fa-grid-2"></i> Grid</button>
+        <button id="reset-camera" class="tool-btn"><i class="fas fa-crosshairs"></i></button>
+      </div>
+
+      <div class="right-menu">
+        <button class="tool-btn"><i class="fas fa-moon"></i></button>
+        <button class="tool-btn"><i class="fas fa-cog"></i></button>
+      </div>
+    </header>
+
+    <div class="main-content">
+
+      <!-- Left Panel: Scene Tree -->
+      <div class="panel left-panel">
+        <div class="panel-header">
+          <span>Scene Tree</span>
+          <button id="add-node-btn" class="add-btn"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" id="scene-search" placeholder="Search nodes..." />
+        </div>
+        <div class="tree-container" id="scene-tree">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Center: Viewport -->
+      <div class="viewport-container">
+        <div class="viewport" id="viewport">
+          <div class="viewport-overlay">
+            <div class="camera-frame"></div>
+            <!-- Sample nodes in viewport (demo) -->
+            <div class="demo-node sprite" style="left: 40%; top: 35%;">
+              <i class="fas fa-image"></i>
+              <span>Player</span>
+            </div>
+            <div class="demo-node camera" style="left: 65%; top: 50%;">
+              <i class="fas fa-video"></i>
+              <span>MainCamera</span>
+            </div>
+          </div>
+          <div class="viewport-hint">Viewport - Drag to pan • Scroll to zoom</div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Inspector -->
+      <div class="panel right-panel">
+        <div class="panel-header">
+          <span>Inspector</span>
+        </div>
+        <div class="inspector-content" id="inspector">
+          <div class="no-selection">
+            <i class="fas fa-mouse-pointer"></i>
+            <p>Select a node to edit properties</p>
+          </div>
+          <!-- Inspector content will be injected here by JS when a node is selected -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Panel (Hidden by default for V1) -->
+    <div class="bottom-panel hidden" id="bottom-panel">
+      <div class="bottom-tabs">
+        <button class="tab active">Console</button>
+        <button class="tab">Assets</button>
+      </div>
+      <div class="console">
+        <p class="log">✅ Editor initialized successfully.</p>
+        <p class="log info">Tip: Right-click on nodes in the scene tree for options.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
